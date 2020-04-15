@@ -1,0 +1,62 @@
+<%= form_with model: @product, local: true do |form| %>
+ 
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this product from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :category %><br>
+    <%= form.text_field :category %>
+  </p>
+
+  <p>
+    <%= form.label :value %><br>
+    <%= form.text_field :value %>
+  </p>
+
+  <%= check_box_tag(:checkSize , "yes") %>
+  <%= label_tag(:checkSize, "Have a Size?") %>
+
+  <div class="checkbox">
+    <td>
+      <%= label_tag(:param_name1, "test1") %>
+      <%= check_box 'param_name1', 'result', {}, 1, 0 %>
+    </td>
+  </div>
+  <div class="checkbox">
+    <td>
+      <%= label_tag(:param_name2, "test2") %>
+      <%= check_box 'param_name2', 'result', {}, 1, 0 %>
+    </td>
+  </div>
+
+  <% if :checkSize == "yes" %>
+    <p>
+      <%= "yes" %>
+    </p>
+
+  <% end %>
+
+  
+
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
